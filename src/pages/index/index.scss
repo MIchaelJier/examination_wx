@@ -1,4 +1,7 @@
 .index {
   flex-direction: column;
   width: 100%;
+  .add_btn {
+    background: $primary-color;
+  }
 }
