@@ -1,0 +1,22 @@
+@mixin contentNone {
+  content: none;
+}
+.nolines.at-checkbox {
+  margin-top: 20px;
+  &::before {
+    @include contentNone;
+  }
+  &::after {
+    @include contentNone;
+  }
+  // maybe it's weapp
+  .at-checkbox__option {
+    padding-left: 0;
+    .at-checkbox__option-wrap {
+      padding: 15px 20px 15px 0;
+      &::after {
+        @include contentNone;
+      }
+    }
+  }
+}

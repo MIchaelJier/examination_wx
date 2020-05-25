@@ -9,6 +9,7 @@ import '@/styles/reset.scss'
 import './app.scss'
 
 import 'taro-ui/dist/style/index.scss'
+import fetch from '@/utils/request'
 
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
@@ -20,7 +21,7 @@ const store = configStore()
 
 class App extends Component {
   config = {
-    pages: ['pages/index/index', 'pages/detail/detail'],
+    pages: ['pages/detail/detail', 'pages/index/index'],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
@@ -33,8 +34,10 @@ class App extends Component {
   // 请勿修改此函数
   render() {
     return (
-      <Provider store={store}>
-        <Index />
+      <Provider store={store} value={fetch}>
+        <Provider value={{ value: fetch }}>
+          <Index />
+        </Provider>
       </Provider>
     )
   }

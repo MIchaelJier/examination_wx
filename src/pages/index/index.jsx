@@ -4,8 +4,10 @@ import { connect } from '@tarojs/redux'
 import { AtButton } from 'taro-ui'
 
 import { add, minus, asyncAdd } from '@/actions/counter'
+import fetch from '@/utils/request'
 
 import './index.scss'
+import Btn from './btn'
 
 @connect(
   ({ counter }) => ({
@@ -27,15 +29,16 @@ class Index extends Component {
   config = {
     navigationBarTitleText: '首页',
   }
+  constructor(props) {
+    super(props)
+    this.state = {
+      user: { id: '00' },
+    }
+  }
 
   componentWillReceiveProps(nextProps) {
-    console.log(this.props, nextProps)
-    Taro.request({
-      url: '/api/user/1',
-      success: (res) => {
-        console.log(res)
-      },
-    })
+    // console.log(this.props, nextProps)
+    console.log(this.state.user)
   }
 
   goPage = () => {
@@ -44,9 +47,26 @@ class Index extends Component {
     })
   }
 
+  getUser = () => {
+    fetch({ url: 'http://www.yingjiechen.cn:9000/mock/20/user/login' }).then(
+      (res) => {
+        // console.log(res)
+        this.setState(
+          {
+            user: res,
+          },
+          () => {
+            console.log(this.state.user)
+          }
+        )
+      }
+    )
+  }
+
   render() {
     return (
       <View className="index">
+        {/* <Consumer>{JSON.stringify(this.context)}</Consumer> */}
         <Button className="add_btn" onClick={this.props.add}>
           +
         </Button>
@@ -56,8 +76,12 @@ class Index extends Component {
         <Button className="dec_btn" onClick={this.props.asyncAdd}>
           async
         </Button>
+        {this.state.user.id && <Btn content={this.state.user.id}></Btn>}
         <AtButton type="primary" onClick={this.goPage}>
           进入
+        </AtButton>
+        <AtButton type="primary" onClick={this.getUser}>
+          请求
         </AtButton>
         <View>
           <Text>{this.props.counter.num}</Text>

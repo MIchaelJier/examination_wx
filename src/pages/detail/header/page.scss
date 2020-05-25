@@ -1,0 +1,22 @@
+.time-gray.at-countdown {
+  color: #bfc0c0;
+  text {
+    color: #bfc0c0;
+    font-family: sans-serif;
+    font-size: 24px;
+  }
+}
+.button-black.at-button {
+  background: #303337;
+  color: #fff;
+  height: 60px;
+  width: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+}
+.button-orange.at-button {
+  background: #ea612a;
+  margin-left: 10px;
+}

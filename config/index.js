@@ -1,6 +1,6 @@
 const path = require('path')
 
-const { mocks } = require(path.resolve(__dirname, '..', 'src/mock'))
+// const { mocks } = require(path.resolve(__dirname, '..', 'src/mock'))
 
 const config = {
   projectName: 'examination_wx',
