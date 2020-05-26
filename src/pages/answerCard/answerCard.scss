@@ -1,0 +1,18 @@
+.answerArea {
+  padding: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  &__round {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    border: 1px solid #b1b2b3;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .choosed {
+    background: #98999a;
+  }
+}

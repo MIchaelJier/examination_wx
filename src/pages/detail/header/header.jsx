@@ -11,6 +11,13 @@ class Header extends Component {
       timeFormat: { hours: ':', minutes: ':', seconds: '' },
     }
   }
+
+  goAnswerCard = () => {
+    Taro.navigateTo({
+      url: '/pages/answerCard/answerCard',
+    })
+  }
+
   render() {
     const { hours, seconds, minutes } = this.state.countTime
     return (
@@ -24,7 +31,7 @@ class Header extends Component {
             minutes={minutes}
             className="time-gray"
           />
-          <AtButton circle className="button-black">
+          <AtButton circle className="button-black" onClick={this.goAnswerCard}>
             答题卡
           </AtButton>
           <AtButton circle className="button-black button-orange">

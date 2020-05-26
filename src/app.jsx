@@ -21,7 +21,11 @@ const store = configStore()
 
 class App extends Component {
   config = {
-    pages: ['pages/detail/detail', 'pages/index/index'],
+    pages: [
+      'pages/detail/detail',
+      'pages/index/index',
+      'pages/answerCard/answerCard',
+    ],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',

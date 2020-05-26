@@ -7,10 +7,15 @@ class Question extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      checkedList: ['list1'],
+      checkedList: [],
     }
   }
 
+  componentWillMount() {
+    this.setState({
+      checkedList: this.props.answer,
+    })
+  }
   componentDidMount() {
     Taro.createSelectorQuery()
       // 自定义组件需要把this.$scope穿进去
@@ -26,6 +31,7 @@ class Question extends Component {
     this.setState({
       checkedList: value,
     })
+    this.props.onChangeAnswer(this.props.questionId, value)
   }
 
   switchHeight = (height) => {
