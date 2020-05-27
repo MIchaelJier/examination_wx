@@ -7,6 +7,7 @@
     width: 80px;
     border-radius: 50%;
     border: 1px solid #b1b2b3;
+    color: #b1b2b3;
     margin: 20px;
     display: flex;
     justify-content: center;
@@ -14,5 +15,6 @@
   }
   .choosed {
     background: #98999a;
+    color: #fff;
   }
 }

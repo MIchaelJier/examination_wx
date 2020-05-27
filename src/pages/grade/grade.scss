@@ -1,0 +1,13 @@
+.content {
+  padding: 40px;
+  background: #fff;
+  &__name {
+    text-align: left;
+    font-size: 40px;
+    font-weight: bolder;
+  }
+  &__grade {
+    text-align: right;
+    padding: 20px 0;
+  }
+}

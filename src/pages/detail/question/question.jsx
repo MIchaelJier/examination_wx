@@ -28,8 +28,14 @@ class Question extends Component {
   }
 
   handleChange = (value) => {
+    // 单选
+    const originList = this.state.checkedList
+    const checkedList =
+      this.props.questionType === 1 && originList
+        ? value.filter((item) => !originList.includes(item))
+        : value
     this.setState({
-      checkedList: value,
+      checkedList,
     })
     this.props.onChangeAnswer(this.props.questionId, value)
   }

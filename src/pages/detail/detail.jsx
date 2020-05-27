@@ -2,8 +2,9 @@ import Taro, { Component } from '@tarojs/taro'
 import { View, Swiper, SwiperItem } from '@tarojs/components'
 import { Header } from './header/header'
 import { connect } from '@tarojs/redux'
-import { getPaperSum, addAnswer } from '@/actions/counter'
+import { getPaperSum, getPageInfo } from '@/actions/counter'
 import { Question } from './question/question'
+import fetch from '@/utils/request'
 import './detail.scss'
 
 @connect(
@@ -14,8 +15,8 @@ import './detail.scss'
     onGetPaperSum(payload) {
       dispatch(getPaperSum(payload))
     },
-    onAddAnswer(payload) {
-      dispatch(addAnswer(payload))
+    onGetPageInfo(payload) {
+      dispatch(getPageInfo(payload))
     },
   })
 )
@@ -30,44 +31,24 @@ class Detail extends Component {
   }
 
   componentWillMount() {
-    const paper = [
-      {
-        title: '为什么1',
-        content: ['选择1', '选择2', '选择3', '选择4'],
-        type: 1,
-        id: 0,
-      },
-      {
-        title: '为什么2',
-        content: ['选择1', '选择2', '选择3', '选择4', '选择5'],
-        type: 1,
-        id: 1,
-      },
-      {
-        title: '为什么3',
-        content: ['选择1', '选择2', '选择3'],
-        type: 1,
-        id: 2,
-      },
-      {
-        title: '为什么4',
-        content: ['选择1', '选择2', '选择3', '选择4'],
-        type: 1,
-        id: 3,
-      },
-      {
-        title: '为什么5',
-        content: ['选择1', '选择2', '选择3', '选择4'],
-        type: 1,
-        id: 4,
-      },
-    ]
-    this.setState({
-      paper,
+    const params = this.$router.params
+    Taro.setNavigationBarTitle({
+      title: params.name,
     })
-    this.props.onGetPaperSum(paper)
+    fetch({ url: '/api/getPageDetail', payload: { id: params.id } }).then(
+      (paper) => {
+        // console.log(paper)
+        this.setState({
+          paper,
+        })
+        this.props.onGetPaperSum(paper)
+        this.props.onGetPageInfo(params)
+      }
+    )
   }
-
+  config = {
+    navigationBarTitleText: '考试中...',
+  }
   getSwiperHeight = ({ index, height }) => {
     // console.log(index, height)
     const swiperHeight = this.state.swiperHeight
@@ -91,6 +72,7 @@ class Detail extends Component {
         }
         return item
       }
+
       // item.id === id ? (item.anser = value && item) : item
     )
     this.setState(
@@ -111,6 +93,7 @@ class Detail extends Component {
           <Question
             index={index}
             questionId={item.id}
+            questionType={item.type}
             title={item.title}
             answer={item.answer}
             checkboxOption={item.content}
@@ -122,7 +105,13 @@ class Detail extends Component {
     ))
     return (
       <View class="page">
-        <Header></Header>
+        <Header
+          currType={
+            this.state.paper[this.state.current]
+              ? this.state.paper[this.state.current].type
+              : ''
+          }
+        ></Header>
         <View style="margin-top: 10px">
           <Swiper
             style={{

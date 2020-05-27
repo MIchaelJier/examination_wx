@@ -4,10 +4,10 @@
 
 ### Build Setup
 
-yarn => yarn serve
+yarn => yarn dev:weapp
 
 ### 目前完成进度
 
-- [] 试卷选择页
+- [x] 试卷选择页
 - [x] 做题页
 - [x] 答题卡页

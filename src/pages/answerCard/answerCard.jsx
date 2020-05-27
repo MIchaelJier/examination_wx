@@ -7,15 +7,19 @@ import './answerCard.scss'
   counter,
 }))
 class AnswerCard extends Component {
+  config = {
+    navigationBarTitleText: '答题卡',
+  }
+
   goPage = (index) => {
     const pages = Taro.getCurrentPages()
     const prePage = pages[pages.length - 2]
-    console.log(prePage)
+    // console.log(prePage)
     prePage.$component.setState({
       current: index,
     })
     Taro.navigateBack({
-      delta: 2,
+      delta: 1,
     })
   }
 

@@ -1,4 +1,11 @@
-import { ADD, MINUS, GET_PAGE_SUM, ADD_ANSWER } from '../constants/counter'
+import {
+  ADD,
+  MINUS,
+  GET_PAGE_SUM,
+  ADD_ANSWER,
+  GET_PAGE_INFO,
+  ADD_TIMESTAMP,
+} from '../constants/counter'
 
 export const add = () => {
   return {
@@ -19,6 +26,18 @@ export const getPaperSum = (payload) => {
 export const addAnswer = (payload) => {
   return {
     type: ADD_ANSWER,
+    payload,
+  }
+}
+export const getPageInfo = (payload) => {
+  return {
+    type: GET_PAGE_INFO,
+    payload,
+  }
+}
+export const addTimestamp = (payload) => {
+  return {
+    type: ADD_TIMESTAMP,
     payload,
   }
 }

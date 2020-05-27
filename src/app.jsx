@@ -1,7 +1,10 @@
+import '@/mock/localServer/lib.js'
+
 import Taro, { Component } from '@tarojs/taro'
 import { Provider } from '@tarojs/redux'
 
 import Index from './pages/index'
+import Choose from './pages/choose/choose'
 
 import configStore from './store'
 
@@ -10,6 +13,8 @@ import './app.scss'
 
 import 'taro-ui/dist/style/index.scss'
 import fetch from '@/utils/request'
+
+// 考试数据导入缓存
 
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
@@ -22,9 +27,11 @@ const store = configStore()
 class App extends Component {
   config = {
     pages: [
+      'pages/choose/choose',
       'pages/detail/detail',
       'pages/index/index',
       'pages/answerCard/answerCard',
+      'pages/grade/grade',
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -39,9 +46,8 @@ class App extends Component {
   render() {
     return (
       <Provider store={store} value={fetch}>
-        <Provider value={{ value: fetch }}>
-          <Index />
-        </Provider>
+        <Index />
+        <Choose />
       </Provider>
     )
   }
