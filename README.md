@@ -11,3 +11,6 @@ yarn => yarn dev:weapp
 - [x] 试卷选择页
 - [x] 做题页
 - [x] 答题卡页
+
+### 扫描体验
+![avatar](/screenshot/gh_6360b37fc0f3_258.jpg) 

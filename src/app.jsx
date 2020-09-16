@@ -29,7 +29,6 @@ class App extends Component {
     pages: [
       'pages/choose/choose',
       'pages/detail/detail',
-      'pages/index/index',
       'pages/answerCard/answerCard',
       'pages/grade/grade',
     ],

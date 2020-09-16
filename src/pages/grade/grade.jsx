@@ -1,8 +1,8 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View } from '@tarojs/components'
+import { View, Text } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
 import { formatDuring } from '@/utils/typeConver'
-import { AtDivider, AtIcon } from 'taro-ui'
+import { AtDivider, AtIcon, AtTimeline } from 'taro-ui'
 
 import './grade.scss'
 
@@ -44,6 +44,17 @@ class Grade extends Component {
           <AtDivider>
             <AtIcon value="check-circle"></AtIcon>
           </AtDivider>
+          <View class="content__history">
+            <Text class="content__history--title">历史记录</Text>
+            <AtTimeline
+              items={[
+                { title: '刷牙洗脸' },
+                { title: '吃早餐', color: 'green' },
+                { title: '上班', color: 'red' },
+                { title: '睡觉', color: 'yellow' },
+              ]}
+            ></AtTimeline>
+          </View>
         </View>
       </View>
     )

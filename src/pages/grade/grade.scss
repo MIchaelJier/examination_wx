@@ -10,4 +10,9 @@
     text-align: right;
     padding: 20px 0;
   }
+  &__history {
+    &--title {
+      border-left: 3px solid $lighting-color;
+    }
+  }
 }
